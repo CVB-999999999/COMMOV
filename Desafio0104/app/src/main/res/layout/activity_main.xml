@@ -49,11 +49,13 @@
             android:textSize="20sp" />
 
         <RadioGroup
+            android:id="@+id/rdSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RadioButton
+                android:id="@+id/M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Masculino" />
