@@ -21,3 +21,7 @@
 
 - LAB PERS-1: Shared Preferences
 - LAB-PERS-2: Room 
+
+## Desafios
+
+- [Desafio Aula PL 01-04-2022](./Desafio0104/desafio.md)
