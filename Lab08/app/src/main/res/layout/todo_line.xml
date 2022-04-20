@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:paddingStart="8dp"
     android:paddingEnd="8dp">
 
@@ -13,10 +13,18 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/todoDate"
+        android:id="@+id/todoCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/todoTitle"
+        android:text="Ir ás compras"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/todoDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoCont"
         android:layout_marginTop="5dp"
         android:text="22-11-2021"
         android:textColor="#ccc"

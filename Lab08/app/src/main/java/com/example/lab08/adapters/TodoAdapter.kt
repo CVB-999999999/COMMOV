@@ -26,6 +26,7 @@ class TodoAdapter(
         holder.title.text = currentTodo.title
         holder.date.text = currentTodo.date.toString()
         holder.number.text = "#" + (position + 1).toString()
+        holder.cont.text = currentTodo.cont
 
     }
 
@@ -39,8 +40,10 @@ class TodoAdapter(
     }
 }
 
+// Vai buscar os elementos da linha da Recycler
 class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val title = itemView.todoTitle
     val date = itemView.todoDate
     val number = itemView.todoNumber
+    val cont = itemView.todoCont
 }
