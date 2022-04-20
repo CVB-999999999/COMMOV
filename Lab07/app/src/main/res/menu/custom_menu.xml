@@ -18,6 +18,11 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/item5"
+        android:title="Opção 5"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/item4"
         android:title="Opção 4"
         app:showAsAction="always">
@@ -30,6 +35,9 @@
             <item
                 android:id="@+id/SubItem2"
                 android:title="SubOpção 2" />
+            <item
+                android:id="@+id/SubItem3"
+                android:title="SubOpção 3" />
         </menu>
     </item>
 </menu>

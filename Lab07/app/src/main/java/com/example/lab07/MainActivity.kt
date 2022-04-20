@@ -67,6 +67,18 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
+            R.id.item2 -> {
+                // Cria a intenção de mudar de pagina
+                val intent = Intent(this, dashboardActivity::class.java).apply {
+                    // Manda o parametro
+                    putExtra(PARAM_NAME, "Opção 2")
+                }
+
+                // muda de pagina
+                startActivity(intent)
+                true
+            }
+
             R.id.item3 -> {
                 Toast.makeText(this, "Item 2 selecionado", Toast.LENGTH_SHORT).show()
                 true
