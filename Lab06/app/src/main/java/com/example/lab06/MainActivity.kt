@@ -45,4 +45,17 @@ class MainActivity : AppCompatActivity() {
         // muda de pagina
         startActivity(intent)
     }
+
+    fun goToNextPage2(view: View) {
+        val editText = findViewById<EditText>(R.id.et1)
+
+        // Cria a intenção de mudar de pagina
+        val intent = Intent(this, MainActivity2::class.java).apply {
+            // Manda o parametro
+            putExtra(PARAM_NAME, editText.text.toString())
+        }
+
+        // muda de pagina
+        startActivity(intent)
+    }
 }
