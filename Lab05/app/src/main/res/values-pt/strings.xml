@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab05</string>
+    <string name="hello">Bem Vindo</string>
+    <string name="calc">Calcular</string>
+    <string name="clean">Limpar</string>
+    <string name="total">Total a pagar</string>
+    <string name="Price">Preço</string>
+    <string name="qtd">Quantidade</string>
+</resources>

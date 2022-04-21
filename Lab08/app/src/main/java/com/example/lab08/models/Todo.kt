@@ -1,10 +1,11 @@
 package com.example.lab08.models
 
-import java.time.LocalDate
-
 data class Todo(
-    val title: String,
-    val date: LocalDate
+    val pais: String,
+    val capital: String,
+    val nDistritos: Int,
+    val nFreguesias: Int,
+    val nHabitantes: Int
 ) {
 
 

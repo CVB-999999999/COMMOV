@@ -2,7 +2,11 @@ package com.example.lab05
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -13,19 +17,53 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun changeName(view: View) {
-        // Vai buscar as partes do layout necessrias
-        val editText = findViewById<EditText>(R.id.et1)
-        val textView = findViewById<TextView>(R.id.tv1)
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this, R.string.hello, Toast.LENGTH_SHORT).show()
+    }
 
-        // Verifica se foi introduzida uma string no editText
-        if(editText.text.toString() == "") {
-            // Cria um toast com um aviso
-            Toast.makeText(this, "Please fill your name", Toast.LENGTH_SHORT).show()
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflate: MenuInflater = menuInflater
+
+        inflate.inflate(R.menu.menuopc, menu)
+
+        return true
+    }
+
+    fun calc(view: View) {
+        val preco = findViewById<EditText>(R.id.et1)
+        val qtd = findViewById<EditText>(R.id.et2)
+        val textView = findViewById<TextView>(R.id.tv1)
+        val iva = findViewById<CheckBox>(R.id.ckb1)
+
+        if (qtd.text.toString() == "" || preco.text.toString() == "") {
+
         } else {
-            // Altera o conteudo da tetView com o conteudo do editText
-            textView.setText(editText.text)
-//            textView.text = editText.text
+            if (iva.isChecked()) {
+                val total = preco.text.toString().toInt() * qtd.text.toString().toInt() * 1.23
+                textView.setText(total.toString())
+            } else {
+                val total = preco.text.toString().toInt() * qtd.text.toString().toInt()
+                textView.setText(total.toString())
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.opc1 -> {
+                val preco = findViewById<EditText>(R.id.et1)
+                val qtd = findViewById<EditText>(R.id.et2)
+                val textView = findViewById<TextView>(R.id.tv1)
+
+                preco.setText("")
+                qtd.setText("")
+                textView.setText("")
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

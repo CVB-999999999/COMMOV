@@ -22,11 +22,18 @@ class TodoAdapter(
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val currentTodo = todos[position]
+        var ct = "pequeno"
 
-        holder.title.text = currentTodo.title
-        holder.date.text = currentTodo.date.toString()
-        holder.number.text = "#" + (position + 1).toString()
+        if (currentTodo.nHabitantes > 200 && currentTodo.nHabitantes < 500) {
+            ct = "médio"
+        } else if (currentTodo.nHabitantes > 499) {
+            ct = "grande"
+        }
 
+        holder.pais.text = currentTodo.pais + ": " + ct
+        holder.capital.text = currentTodo.capital
+        holder.count.text = (currentTodo.nDistritos + currentTodo.nFreguesias).toString()
+        holder.nHabitantes.text = currentTodo.nHabitantes.toString() + " Habitantes"
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +47,8 @@ class TodoAdapter(
 }
 
 class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val title = itemView.todoTitle
-    val date = itemView.todoDate
-    val number = itemView.todoNumber
+    val pais = itemView.todoPais
+    val capital = itemView.todoCapital
+    val count = itemView.todoCount
+    val nHabitantes = itemView.todoNHabitantes
 }

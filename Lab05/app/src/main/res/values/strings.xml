@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Lab05</string>
+    <string name="hello">Welcome</string>
+    <string name="calc">Calculate</string>
+    <string name="clean">Clean</string>
+    <string name="total">Total to pay</string>
+    <string name="Price">Price</string>
+    <string name="qtd">Quantity</string>
 </resources>

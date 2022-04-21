@@ -21,16 +21,28 @@ class MainActivity : AppCompatActivity() {
         rvTodoItems.adapter = todoAdapter
         rvTodoItems.layoutManager = LinearLayoutManager(this)
 
-        btnAddTodo.setOnClickListener {
-            val todoTitle = etTodo.text.toString()
+//        var arrayL: ArrayList<Todo>
 
-            if (todoTitle.isNotEmpty()) {
-                val todo = Todo(todoTitle, LocalDate.now())
+        /*arrayL.add(Todo("Pais 10", "Capital 1", 10, 20, 100))
+        arrayL.add(Todo("Pais 9", "Capital 2", 20, 40, 200))
+        arrayL.add(Todo("Pais 8", "Capital 3", 30, 60, 300))
+        arrayL.add(Todo("Pais 7", "Capital 4", 40, 80, 400))
+        arrayL.add(Todo("Pais 6", "Capital 5", 50, 100, 500))
+        arrayL.add(Todo("Pais 5", "Capital 6", 60, 120, 600))
+        arrayL.add(Todo("Pais 4", "Capital 7", 70, 140, 700))
+        arrayL.add(Todo("Pais 3", "Capital 8", 80, 160, 800))
+        arrayL.add(Todo("Pais 2", "Capital 9", 90, 180, 900))
+        arrayL.add(Todo("Pais 1", "Capital 10", 100, 200, 1000))*/
 
-                todoAdapter.addTodo(todo)
-
-                etTodo.text.clear()
-            }
-        }
+        todoAdapter.addTodo(Todo("Pais 10", "Capital 1", 10, 20, 100))
+        todoAdapter.addTodo(Todo("Pais 9", "Capital 2", 20, 40, 200))
+        todoAdapter.addTodo(Todo("Pais 8", "Capital 3", 30, 60, 300))
+        todoAdapter.addTodo(Todo("Pais 7", "Capital 4", 40, 80, 400))
+        todoAdapter.addTodo(Todo("Pais 6", "Capital 5", 50, 100, 500))
+        todoAdapter.addTodo(Todo("Pais 5", "Capital 6", 60, 120, 600))
+        todoAdapter.addTodo(Todo("Pais 4", "Capital 7", 70, 140, 700))
+        todoAdapter.addTodo(Todo("Pais 3", "Capital 8", 80, 160, 800))
+        todoAdapter.addTodo(Todo("Pais 2", "Capital 9", 90, 180, 900))
+        todoAdapter.addTodo(Todo("Pais 1", "Capital 10", 100, 200, 1000))
     }
 }

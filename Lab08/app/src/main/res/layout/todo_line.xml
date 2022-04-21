@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="100dp"
     android:paddingStart="8dp"
     android:paddingEnd="8dp">
 
     <TextView
-        android:id="@+id/todoTitle"
+        android:id="@+id/todoPais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ir ás compras"
-        android:textSize="24sp" />
+        android:layout_below="@id/todoCapital"
+        android:text="Pais" />
 
     <TextView
-        android:id="@+id/todoDate"
-        android:layout_width="wrap_content"
+        android:id="@+id/todoCapital"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/todoTitle"
-        android:layout_marginTop="5dp"
-        android:text="22-11-2021"
-        android:textColor="#ccc"
-        android:textSize="12sp" />
+        android:gravity="center"
+        android:text="capital"/>
 
     <TextView
-        android:id="@+id/todoNumber"
-        android:layout_width="wrap_content"
+        android:id="@+id/todoCount"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:text="#1"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_alignParentBottom="true"
+        android:gravity="end"
+        android:text="Freguesias" />
+
+    <TextView
+        android:id="@+id/todoNHabitantes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="#1" />
 
 </RelativeLayout>
