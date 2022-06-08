@@ -1,6 +1,7 @@
 package com.example.lab_mapas_01
 
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,8 +35,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
     private lateinit var lastLocation: Location
 
+    //added to implement distance between two locations
+    private var continenteLat: Double = 0.0
+    private var continenteLong: Double = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //added to implement distance between two locations
+        continenteLat = 41.7043
+        continenteLong = -8.8148
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -54,6 +63,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15.0f))
                 findViewById<TextView>(R.id.txtcoordenadas).setText("Lat: " + loc.latitude + " - Long: " + loc.longitude)
+                val address = getAddress(lastLocation.latitude, lastLocation.longitude)
+                findViewById<TextView>(R.id.txtmorada).setText("Morada: " + address)
+                findViewById<TextView>(R.id.txtdistancia).setText(
+                    "Distância: " + calculateDistance(
+                        lastLocation.latitude, lastLocation.longitude,
+                        continenteLat, continenteLong
+                    ).toString()
+                )
                 Log.d("**** SARA", "new location received - " + loc.latitude + " -" + loc.longitude)
             }
         }
@@ -95,6 +112,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             locationCallback,
             Looper.getMainLooper()
         )
+    }
+
+    fun calculateDistance(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Float {
+        val results = FloatArray(1)
+        Location.distanceBetween(lat1, lng1, lat2, lng2, results)
+// distance in meter
+        return results[0]
+    }
+
+    private fun getAddress(lat: Double, lng: Double): String {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        return list[0].getAddressLine(0)
     }
 
     private fun createLocationRequest() {

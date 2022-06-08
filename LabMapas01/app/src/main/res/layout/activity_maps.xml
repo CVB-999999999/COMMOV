@@ -17,6 +17,20 @@
     <TextView
         android:id="@+id/txtcoordenadas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtmorada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtcoordenadas"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/txtdistancia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtmorada"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
