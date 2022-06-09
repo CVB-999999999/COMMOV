@@ -14,6 +14,6 @@ interface EndPoints {
 //    @POST("/posts")
 //    fun postTest(@Field("title") first: String?): Call<OutputPost>
 
-    @GET("/portugal")
+    @GET("/v3.1/name/portugal")
     fun getUsers(): Call<List<output>>
 }

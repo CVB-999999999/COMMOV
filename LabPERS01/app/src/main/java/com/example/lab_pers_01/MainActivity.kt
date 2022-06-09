@@ -16,18 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-// Vai buscar o SP, se não existir cria
         val sharedPreference: SharedPreferences =
             getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
 
-// Vai buscar o valor do username, se não encotrar retorna string vazia (2º parametro)
         val usernameValue = sharedPreference.getString("PREF_USERNAME", "")
 
-//        Log.d("SHARED_PREF_AULA", "Shared Preference: $usernameValue")
-
-// Verifica se encontrou um username
         if (usernameValue!!.isNotEmpty()) {
-//            showWelcome(usernameValue)
             findViewById<EditText>(R.id.et1).hint = usernameValue
         } else {
             findViewById<EditText>(R.id.et1).hint = "Inexistente"
@@ -73,21 +67,17 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-//    fun login(view: View) {
-//        val editTextUserName = findViewById<EditText>(R.id.et1)
-//
-//        // Guarda o nome de utilizador
-//        if (editTextUserName.text.isNotEmpty()) {
-//            val sharedPreference: SharedPreferences =
-//                getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
-//
-//            sharedPreference.edit()
-//                .putString("PREF_USERNAME", editTextUserName.text.toString())
-//                .apply()
-//
-////            showWelcome(editTextUserName.text.toString())
-//
-//            Log.d("SHARED_PREF_AULA", "Shared Preference: ${editTextUserName.text}")
-//        }
-//    }
+    fun login(view: View) {
+        val editTextUserName = findViewById<EditText>(R.id.et1)
+
+        // Guarda o nome de utilizador
+        if (editTextUserName.text.isNotEmpty()) {
+            val sharedPreference: SharedPreferences =
+                getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
+
+            sharedPreference.edit()
+                .putString("PREF_USERNAME", editTextUserName.text.toString())
+                .apply()
+        }
+    }
 }
