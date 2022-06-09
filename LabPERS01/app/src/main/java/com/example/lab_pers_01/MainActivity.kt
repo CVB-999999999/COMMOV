@@ -23,70 +23,71 @@ class MainActivity : AppCompatActivity() {
 // Vai buscar o valor do username, se não encotrar retorna string vazia (2º parametro)
         val usernameValue = sharedPreference.getString("PREF_USERNAME", "")
 
-        Log.d("SHARED_PREF_AULA", "Shared Preference: $usernameValue")
+//        Log.d("SHARED_PREF_AULA", "Shared Preference: $usernameValue")
 
 // Verifica se encontrou um username
         if (usernameValue!!.isNotEmpty()) {
-            showWelcome(usernameValue)
-        }
+//            showWelcome(usernameValue)
+            findViewById<EditText>(R.id.et1).hint = usernameValue
+        } else {
+            findViewById<EditText>(R.id.et1).hint = "Inexistente"
     }
 
-    private fun showWelcome(usernameValue: String) {
-        findViewById<TextView>(R.id.tv1).text = "Hello, $usernameValue"
-        findViewById<EditText>(R.id.et1).isEnabled = false
-
-        val btn = findViewById<Button>(R.id.btn1)
-
-        btn.text = "Logout"
+//    private fun showWelcome(usernameValue: String) {
+//        findViewById<EditText>(R.id.et1).hint = usernameValue
+//
+//        val btn = findViewById<Button>(R.id.btn1)
+//
+//        btn.text = "Logout"
 
 // Muda o btn de login para logout
-        btn.setOnClickListener {
-            logout(it)
-        }
+//        btn.setOnClickListener {
+//            logout(it)
+//        }
     }
 
-    private fun logout(view: View) {
-        val sharedPreference: SharedPreferences =
-            getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
+//    private fun logout(view: View) {
+//        val sharedPreference: SharedPreferences =
+//            getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
+//
+//        // Apaga o conteudo da Shared Preference
+//        sharedPreference.edit().clear().apply()
+//
+//        showLogin()
+//
+//        Log.d("SHARED_PREF_AULA", "Shared Preference:")
+//    }
 
-        // Apaga o conteudo da Shared Preference
-        sharedPreference.edit().clear().apply()
+//    // Repoem o layout inicial da app (pre login)
+//    private fun showLogin() {
+//        findViewById<TextView>(R.id.tv1).text = "Login"
+//        findViewById<EditText>(R.id.et1).isEnabled = true
+//
+//        val btn = findViewById<Button>(R.id.btn1)
+//
+//        btn.text = "Login"
+//
+//// Muda o btn de logout para login
+//        btn.setOnClickListener {
+//            login(it)
+//        }
+//    }
 
-        showLogin()
-
-        Log.d("SHARED_PREF_AULA", "Shared Preference:")
-    }
-
-    // Repoem o layout inicial da app (pre login)
-    private fun showLogin() {
-        findViewById<TextView>(R.id.tv1).text = "Login"
-        findViewById<EditText>(R.id.et1).isEnabled = true
-
-        val btn = findViewById<Button>(R.id.btn1)
-
-        btn.text = "Login"
-
-// Muda o btn de logout para login
-        btn.setOnClickListener {
-            login(it)
-        }
-    }
-
-    fun login(view: View) {
-        val editTextUserName = findViewById<EditText>(R.id.et1)
-
-        // Guarda o nome de utilizador
-        if (editTextUserName.text.isNotEmpty()) {
-            val sharedPreference: SharedPreferences =
-                getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
-
-            sharedPreference.edit()
-                .putString("PREF_USERNAME", editTextUserName.text.toString())
-                .apply()
-
-            showWelcome(editTextUserName.text.toString())
-
-            Log.d("SHARED_PREF_AULA", "Shared Preference: ${editTextUserName.text}")
-        }
-    }
+//    fun login(view: View) {
+//        val editTextUserName = findViewById<EditText>(R.id.et1)
+//
+//        // Guarda o nome de utilizador
+//        if (editTextUserName.text.isNotEmpty()) {
+//            val sharedPreference: SharedPreferences =
+//                getSharedPreferences("FILE_1", Context.MODE_PRIVATE)
+//
+//            sharedPreference.edit()
+//                .putString("PREF_USERNAME", editTextUserName.text.toString())
+//                .apply()
+//
+////            showWelcome(editTextUserName.text.toString())
+//
+//            Log.d("SHARED_PREF_AULA", "Shared Preference: ${editTextUserName.text}")
+//        }
+//    }
 }

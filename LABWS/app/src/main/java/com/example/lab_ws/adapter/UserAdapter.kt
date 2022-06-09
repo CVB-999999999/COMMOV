@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_ws.R
-import com.example.lab_ws.output.User
+import com.example.lab_ws.output.output
 
 
-class UserAdapter(val users: List<User>): RecyclerView.Adapter<UsersViewHolder>() {
+class UserAdapter(val users: List<output>): RecyclerView.Adapter<UsersViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.recycler_line,
@@ -31,9 +31,9 @@ class UsersViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
     private val email:TextView = itemView.findViewById(R.id.text2)
     private val city:TextView = itemView.findViewById(R.id.text3)
 
-    fun bind(user: User) {
-        name.text = user.name
-        city.text = user.address.city
-        email.text = user.email
+    fun bind(user: output) {
+        name.text = user.name.nativeName.por.common
+        city.text = user.currencies.EUR.symbol
+        email.text = user.capital
     }
 }

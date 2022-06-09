@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.labpers02.model.Person
+import java.util.*
 
 class WordListAdapter : ListAdapter<Person, WordListAdapter.WordViewHolder>(WordsComparator()) {
 
@@ -18,7 +19,13 @@ class WordListAdapter : ListAdapter<Person, WordListAdapter.WordViewHolder>(Word
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.name)
+
+        var anoC = "Ainda não fez anos"
+
+        if (current.ano == 2020) {
+            anoC = "Já fez anos"
+        }
+        holder.bind(current.name + " (" + current.idade + ") - " + anoC)
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -43,7 +50,7 @@ class WordListAdapter : ListAdapter<Person, WordListAdapter.WordViewHolder>(Word
         }
 
         override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return oldItem.name == newItem.name && oldItem.idade == newItem.idade && oldItem.email == newItem.email
+            return oldItem.name == newItem.name && oldItem.idade == newItem.idade && oldItem.email == newItem.email && oldItem.ano == newItem.ano
         }
     }
 }

@@ -9,6 +9,8 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
 
     val allPeople: LiveData<List<Person>> = repository.allPeople.asLiveData()
 
+    val peopleB: LiveData<List<Person>> = repository.peopleB.asLiveData()
+
     fun insert(person: Person) = viewModelScope.launch {
         repository.insert(person)
     }

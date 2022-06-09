@@ -12,5 +12,7 @@ class Person(
     @ColumnInfo(name = "idade")
     val idade: Int,
     @ColumnInfo(name = "email")
-    val email: String
+    val email: String,
+    @ColumnInfo(name = "ano")
+    val ano: Int
 )

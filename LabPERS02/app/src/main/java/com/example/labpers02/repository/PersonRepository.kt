@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class PersonRepository(private val personDao: PersonDao) {
 
     val allPeople: Flow<List<Person>> = personDao.getOrderPeople()
+    val peopleB: Flow<List<Person>> = personDao.getOrderPeopleB()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread

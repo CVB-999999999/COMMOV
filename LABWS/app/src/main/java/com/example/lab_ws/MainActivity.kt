@@ -7,10 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_ws.adapter.UserAdapter
-import com.example.lab_ws.output.EndPoints
-import com.example.lab_ws.output.OutputPost
-import com.example.lab_ws.output.ServiceBuilder
-import com.example.lab_ws.output.User
+import com.example.lab_ws.output.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        call.enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+        call.enqueue(object : Callback<List<output>> {
+            override fun onResponse(call: Call<List<output>>, response: Response<List<output>>) {
                 if (response.isSuccessful) {
                     recyclerView.apply {
                         setHasFixedSize(true)
@@ -36,52 +33,57 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+            override fun onFailure(call: Call<List<output>>, t: Throwable) {
                 Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_LONG).show()
             }
         })
     }
 
-    fun getSingle(view: View) {
-        val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.getUserById(2)
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                if (response.isSuccessful) {
-                    val c: User = response.body()!!
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Get Single: " + c.address.zipcode,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
+//    fun getSingle(view: View) {
+//        val request = ServiceBuilder.buildService(EndPoints::class.java)
+//        val call = request.getUserById(2)
+//        call.enqueue(object : Callback<User> {
+//            override fun onResponse(call: Call<User>, response: Response<User>) {
+//                if (response.isSuccessful) {
+//                    val c: User = response.body()!!
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        "Get Single: " + c.address.zipcode,
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<User>, t: Throwable) {
+//                Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
+//
+//    fun post(view: View) {
+//        val request = ServiceBuilder.buildService(EndPoints::class.java)
+//        val call = request.postTest("teste")
+//
+//        call.enqueue(object : Callback<OutputPost> {
+//            override fun onResponse(call: Call<OutputPost>, response: Response<OutputPost>) {
+//                if (response.isSuccessful) {
+//                    val c: OutputPost = response.body()!!
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        c.id.toString() + "-" + c.title,
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<OutputPost>, t: Throwable) {
+//                Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
+}
 
-    fun post(view: View) {
-        val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.postTest("teste")
+private fun <T> Call<T>.enqueue(callback: Callback<output>) {
 
-        call.enqueue(object : Callback<OutputPost> {
-            override fun onResponse(call: Call<OutputPost>, response: Response<OutputPost>) {
-                if (response.isSuccessful) {
-                    val c: OutputPost = response.body()!!
-                    Toast.makeText(
-                        this@MainActivity,
-                        c.id.toString() + "-" + c.title,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-
-            override fun onFailure(call: Call<OutputPost>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 }

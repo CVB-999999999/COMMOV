@@ -17,9 +17,15 @@ interface PersonDao {
     @Query("SELECT * FROM person_table ORDER BY name ASC")
     fun getOrderPeople(): Flow<List<Person>>
 
+    @Query("SELECT * FROM person_table WHERE name = \"b*\" ORDER BY name ASC")
+    fun getOrderPeopleB(): Flow<List<Person>>
+
     @Insert(onConflict = IGNORE)
     suspend fun insert(person: Person)
 
     @Query("DELETE FROM person_table")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM person_table where idade = 20")
+    suspend fun deleteAll20()
 }
