@@ -18,14 +18,16 @@ class WordListAdapter : ListAdapter<Person, WordListAdapter.WordViewHolder>(Word
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.name)
+        holder.bind(current.produto, current.preco.toString(), current.marca)
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val wordItemView: TextView = itemView.findViewById(R.id.textView)
+        private val wordItemView1: TextView = itemView.findViewById(R.id.textView1)
 
-        fun bind(text: String?) {
-            wordItemView.text = text
+        fun bind(text: String?, text1: String?, text2: String?) {
+            wordItemView.text = "$text - $text2"
+            wordItemView1.text = text1
         }
 
         companion object {
@@ -43,7 +45,7 @@ class WordListAdapter : ListAdapter<Person, WordListAdapter.WordViewHolder>(Word
         }
 
         override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return oldItem.name == newItem.name && oldItem.idade == newItem.idade && oldItem.email == newItem.email
+            return oldItem.produto == newItem.produto && oldItem.preco == newItem.preco && oldItem.marca == newItem.marca
         }
     }
 }

@@ -14,7 +14,7 @@ interface PersonDao {
     // Flow -> info em tempo real
     // suspend -> usado não operações de CUD, não é necessario em read
 
-    @Query("SELECT * FROM person_table ORDER BY name ASC")
+    @Query("SELECT * FROM person_table ORDER BY produto ASC")
     fun getOrderPeople(): Flow<List<Person>>
 
     @Insert(onConflict = IGNORE)

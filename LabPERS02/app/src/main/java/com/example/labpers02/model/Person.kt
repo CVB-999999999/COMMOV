@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "person_table")
 class Person(
     @PrimaryKey
-    @ColumnInfo(name = "name")
-    val name: String,
-    @ColumnInfo(name = "idade")
-    val idade: Int,
-    @ColumnInfo(name = "email")
-    val email: String
+    @ColumnInfo(name = "produto")
+    val produto: String,
+    @ColumnInfo(name = "preco")
+    val preco: Int,
+    @ColumnInfo(name = "marca")
+    val marca: String
 )

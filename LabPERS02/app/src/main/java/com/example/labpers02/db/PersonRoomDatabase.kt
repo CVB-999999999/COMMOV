@@ -33,9 +33,9 @@ abstract class PersonRoomDatabase : RoomDatabase() {
             wordDao.deleteAll()
 
             // Add sample words.
-            var word = Person("Jõao", 21, "joao@email.com")
+            var word = Person("Uvas", 2, "Continente")
             wordDao.insert(word)
-            word = Person("Ana", 35, "ana@email.com")
+            word = Person("Ameixas", 3, "Frize")
             wordDao.insert(word)
 
             // TODO: Add your own words!
