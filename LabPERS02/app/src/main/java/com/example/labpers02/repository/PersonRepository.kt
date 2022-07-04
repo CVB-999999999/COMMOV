@@ -14,4 +14,10 @@ class PersonRepository(private val personDao: PersonDao) {
     suspend fun insert(person: Person) {
         personDao.insert(person)
     }
+
+    suspend fun continente() {
+        personDao.continente()
+    }
+
+
 }

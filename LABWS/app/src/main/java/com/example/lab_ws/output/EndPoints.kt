@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface EndPoints {
-    @GET("/users/")
+    @GET("/v3.1/region/europe")
     fun getUsers(): Call<List<User>>
 
     @GET("/users/{id}")

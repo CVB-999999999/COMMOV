@@ -1,12 +1,15 @@
 package com.example.lab_ws.output
 
 data class User(
-    val id: Int,
-    val name: String,
-    val email: String,
-    val address: Address
+    val independent: Boolean,
+    val capital: Array<String>,
+    val translations: Translations
 )
-data class Address(
-    val city: String,
-    val zipcode: String
+
+data class Translations(
+    val spa: Spa
+)
+
+data class Spa(
+    val official: String
 )

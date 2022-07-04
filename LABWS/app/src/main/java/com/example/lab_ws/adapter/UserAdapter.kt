@@ -28,12 +28,10 @@ class UserAdapter(val users: List<User>): RecyclerView.Adapter<UsersViewHolder>(
 
 class UsersViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
     private val name: TextView = itemView.findViewById(R.id.text1)
-    private val email:TextView = itemView.findViewById(R.id.text2)
     private val city:TextView = itemView.findViewById(R.id.text3)
 
     fun bind(user: User) {
-        name.text = user.name
-        city.text = user.address.city
-        email.text = user.email
+        name.text = user.independent.toString()
+        city.text = user.translations.spa.official
     }
 }

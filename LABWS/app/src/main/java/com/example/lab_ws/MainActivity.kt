@@ -23,16 +23,37 @@ class MainActivity : AppCompatActivity() {
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getUsers()
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+//        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful) {
-                    recyclerView.apply {
-                        setHasFixedSize(true)
-                        layoutManager = LinearLayoutManager(this@MainActivity)
-                        adapter = UserAdapter(response.body()!!)
+//                    recyclerView.apply {
+//                        setHasFixedSize(true)
+//                        layoutManager = LinearLayoutManager(this@MainActivity)
+//                        adapter = UserAdapter(response.body()!!)
+
+                    var ind = 0;
+                    var trans: String? = null;
+
+                    for (r in response.body()!!) {
+                        if (r.independent) {
+                            ind++;
+                        }
+
+                        if (r.capital[0] == "Stockholm") {
+                            trans = r.translations.spa.official;
+                        }
                     }
+
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Total: " + response.body()?.size.toString() + "; Independentes: " + ind + "; Tradução: " + trans,
+                        Toast.LENGTH_LONG
+                    ).show()
+
+
+//                    }
                 }
             }
 
@@ -41,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
+/*
     fun getSingle(view: View) {
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getUserById(2)
@@ -83,5 +104,5 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-    }
+    }*/
 }

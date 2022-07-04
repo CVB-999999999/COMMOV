@@ -22,4 +22,9 @@ interface PersonDao {
 
     @Query("DELETE FROM person_table")
     suspend fun deleteAll()
+
+
+    fun continente() {
+        TODO("Not yet implemented")
+    }
 }
